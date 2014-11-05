@@ -1,0 +1,19 @@
+#profession_wrapper {
+    display:table;
+    width:100%;
+}
+#profession {
+    display:inline-block;
+    width:90%;
+}
+#percentage {
+    float:right;
+    display:inline-block;
+    width:10%;
+}
+#child {
+    display:block;
+    %background-color:#76b76c;
+    width:98%;
+    margin: 0 auto;
+}
