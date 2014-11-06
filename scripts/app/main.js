@@ -6,11 +6,13 @@ define([
     chart
 ){
 	// mocking data.
-	data = [{
+	var title = "Top Professions";
+
+	var data = [{
 		name: "Executive",
 		percentage: 65
 	}, {
-		name: "Scientist&nbsp;&amp;&Researcher",
+		name: "Scientist"+String.fromCharCode(160)+"&"+String.fromCharCode(160)+"Researcher",
 		percentage: 21
 	}, {
 		name: "Artist",
@@ -19,5 +21,7 @@ define([
 
 	//grab div from the DOM
 
-	chart(data,1)
+	chart(data, title, 'dynChart', $('#chartme'));
+
+	chart
 });

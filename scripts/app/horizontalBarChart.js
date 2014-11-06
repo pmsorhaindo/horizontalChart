@@ -6,10 +6,11 @@ define([
     $,
     _
 ){
-    function horizontalBarChart(data,element){
+    function horizontalBarChart(data,title,chartID,elem){
       
-      console.log("run!");
+      elem.append($('<div></div>').addClass('normalfont mediumtext').text(title));
       var animationSeconds = 1; // Default animation length 1.
+      var color = '#55ACEE';
 
       var grabPercentage = function(x) {
         return x.percentage;
@@ -19,8 +20,34 @@ define([
         return x.name;
       }
 
-      var metricValues = data.map(grabPercentage); //.concat(intrObjArr.map(grabPercentage));
+      var metricValues = data.map(grabPercentage);
       var barNames = data.map(grabName);
+      var numberOfBars = barNames.length;
+
+      for (var i =0; i<barNames.length; i++)
+      {
+        var $profession = $('<div></div>').addClass('barContainer smalltext')
+        var $child = $('<div></div>').addClass('child');
+        var $percentage = $('<div></div>').text(metricValues[i]+'%')
+          .addClass('percentage');
+        var $bar = $('<div></div>')
+          .css("float","left")
+          .css("width",0)
+          .css("background-color",color)
+          .attr( "id",chartID+'Bar'+i)
+          .text(barNames[i]);
+
+        elem.append($profession.append($child.append($bar)).append($percentage));
+      }
+
+      
+
+      //<div id="profession">
+      //  <div id="child">
+      //    <div id="bar1" style="float:left; width:0%;background-color:#55ACEE">Executive</div>
+      //    </div>
+      //  <div id="percentage">65%</div>
+      //</div>
 
       var incFrameFunc = function(x) {
         return Math.ceil(x / (animationSeconds * 60 /*approx. fps*/ ));
@@ -46,9 +73,13 @@ define([
           requestAnimationFrame(frame);
         }
 
-        $("#bar1").css("width", nextValuesArr[0]+ "%");
-        $("#bar2").css("width", nextValuesArr[1] + "%");
-        $("#bar3").css("width", nextValuesArr[2] + "%");
+        for(var i = 0; i<numberOfBars; i++)
+        {
+          $('#'+chartID+'Bar'+i).css("width", nextValuesArr[i]+ "%");
+        }
+
+
+
         displayedValuesArr = nextValuesArr;
       }
 

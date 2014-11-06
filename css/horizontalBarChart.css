@@ -1,0 +1,19 @@
+
+.horizontalBarChart {
+    display:table;
+    width:100%;
+}
+
+.barContainer {
+	display:inline-block;
+    width:90%;
+}
+.percentage {
+	float:right;
+    display:inline-block;
+    width:10%;
+}
+.child{
+	display:block;
+    margin: 0 auto;
+}
