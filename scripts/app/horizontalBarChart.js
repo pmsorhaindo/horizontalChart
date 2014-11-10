@@ -22,18 +22,19 @@ define([
     setHeading(elem);
 
     for (var i = 0; i < barNames.length; i++) {
-      var $lineHolder = $('<div></div>').addClass('lineHolder');
-      var $profession = $('<div></div>').addClass('barContainer smalltext cellpadding');
-      var $child = $('<div></div>').addClass('child');
-      var $percentage = $('<div></div>').text(metricValues[i] + '%')
+      var $lineHolder, $profession, $child, percentage, bar, barLabel;
+      $lineHolder = $('<div></div>').addClass('lineHolder');
+      $profession = $('<div></div>').addClass('barContainer smalltext cellpadding');
+      $child = $('<div></div>').addClass('child');
+      $percentage = $('<div></div>').text(metricValues[i] + '%')
         .addClass('percentage');
-      var $bar = $('<div></div>')
+      $bar = $('<div></div>')
         .css("width", 0)
         .css("background-color", color)
         .attr("id", chartID + 'Bar' + i)
         .text(String.fromCharCode(160));
 
-      var $barLabel = $('<div></div>').addClass('barLabel smalltext textellipsis cellpadding').text(barNames[i]);
+      $barLabel = $('<div></div>').addClass('barLabel smalltext textellipsis cellpadding').text(barNames[i]);
       
       $lineHolder.append($barLabel);
       elem.addClass('fivecol');
@@ -45,15 +46,15 @@ define([
 
     function incFrameFunc(x) {
       return Math.ceil(x / (animationSeconds * 60 /*approx. fps*/ ));
-    };
+    }
 
     function grabPercentage(x) {
       return x.percentage;
-    };
+    }
 
     function grabName(x) {
       return x.name;
-    };
+    }
 
     function frame() {
       // calculate next values by adding each corresponding value arrays incrementsPerFrameArr to displayedValuesArr
@@ -73,7 +74,7 @@ define([
       }
 
       displayedValuesArr = nextValuesArr;
-    };
+    }
 
     function setHeading(elem) {
       // Enforce a vertical separator
@@ -81,7 +82,7 @@ define([
       // Print Charts title
       elem.append($('<div></div>').addClass('largetext smallpadding-vertical')
         .text(title.toUpperCase()));
-    };
+    }
 
     function allBarsComplete(nextValuesArr) {
       var complete = true;
@@ -93,18 +94,18 @@ define([
         }
       }
       return complete;
-    };
+    }
 
     function normalizePercentages(percentagesArr) {
       var maxVal = Math.max.apply(null, percentagesArr),
         newPerc = 100 / maxVal,
         normalizedPercentageArray = percentagesArr.map(function(val) {
-        return newPerc * val
+        return newPerc * val;
       });
-      return normalizedPercentageArray
-    };
+      return normalizedPercentageArray;
+    }
 
-  };
+  }
 
   return horizontalBarChart;
 });
