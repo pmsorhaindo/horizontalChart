@@ -4,16 +4,31 @@
     width:100%;
 }
 
+.lineHolder{
+	border-bottom-color: black;
+	border-bottom-width: thin;
+	border-bottom-style: dotted;
+}
+
 .barContainer {
 	display:inline-block;
-    width:90%;
+    width:calc(100% - 100px);
 }
+
+.barLabel{
+	width:100px;
+	display:inline-block;
+}
+
 .percentage {
-	float:right;
+	float:left;
     display:inline-block;
-    width:10%;
+    width:25px;
+    color:#55ACEE;
+
 }
 .child{
-	display:block;
+	display:inline-block;
     margin: 0 auto;
+    width:calc(100% - 25px);
 }
