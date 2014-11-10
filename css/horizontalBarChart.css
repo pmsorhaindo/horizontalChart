@@ -12,7 +12,8 @@
 
 .barContainer {
 	display:inline-block;
-    width:calc(100% - 140px);
+    width:calc(100% - 124px);
+    padding-right:0; 
 }
 
 .barLabel{
